@@ -1,12 +1,12 @@
 import java.sql.*;
 
-public class TestaMensagem {
+public class TestaListagem {
     public static void main(String[] args) throws SQLException {
         Connection connection = new ConnectionFactory().getConnection();
 
-        Statement statement = connection.createStatement();
+        PreparedStatement statement = connection.prepareStatement("select * from produto");
 
-        statement.execute("select * from produto");
+        statement.execute();
 
         ResultSet resultSet = statement.getResultSet();
 
