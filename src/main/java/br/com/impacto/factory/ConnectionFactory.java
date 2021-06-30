@@ -1,3 +1,5 @@
+package br.com.impacto.factory;
+
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import javax.sql.DataSource;
@@ -15,7 +17,11 @@ public class ConnectionFactory {
         this.dataSource = comboPooledDataSource;
     }
 
-    public Connection getConnection() throws SQLException {
-        return this.dataSource.getConnection();
+    public Connection getConnection() {
+        try {
+            return this.dataSource.getConnection();
+        } catch (SQLException e) {
+           throw new RuntimeException(e);
+        }
     }
 }
